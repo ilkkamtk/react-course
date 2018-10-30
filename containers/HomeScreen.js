@@ -34,10 +34,11 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
   kentta: {
     height: 40,
-    borderColor: 'black',
+    borderColor: '#aaa',
     borderWidth: 1,
     margin: 8,
     padding: 10,
+    borderRadius: 3,
   },
   container: {
     alignItems: 'center',
@@ -50,6 +51,8 @@ const styles = StyleSheet.create({
     width: 150,
     padding: 20,
     color: 'white',
+    borderRadius: 8,
+    overflow: 'hidden',
   },
   image: {
     alignSelf: 'stretch',
