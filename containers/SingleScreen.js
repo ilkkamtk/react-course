@@ -1,23 +1,17 @@
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import React from 'react';
+import {StyleSheet, WebView} from 'react-native';
 
-class SingleScreen extends Component {
-
-  render() {
-    return (
-        <View>
-          <Text style={styles.bigblue}>Single TV show here</Text>
-        </View>
-    );
-  }
-}
+const SingleScreen = (props) => {
+  return <WebView
+      style={styles.container}
+      source={{uri: 'https://www.amc.com/shows/the-walking-dead'}}
+      startInLoadingState={true}
+  />;
+};
 
 const styles = StyleSheet.create({
-  bigblue: {
-    margin: 40,
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
+  container: {
+    marginTop: 40,
   },
 });
 

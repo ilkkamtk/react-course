@@ -4,24 +4,25 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
+  TouchableOpacity, Image,
 } from 'react-native';
 
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      text: 'Name of show here',
-    };
   }
 
   render() {
     return (
         <View>
+          <Image
+              style={styles.image}
+              source={{uri: 'http://placekitten.com/640/480'}}
+          />
           <TextInput
               style={styles.kentta}
               placeholder={'Search for TV show'}
-              value={this.state.text}
+              value={this.props.text}
           />
           <TouchableOpacity style={styles.container}>
             <Text style={styles.nappi}>Search</Text>
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: 'black',
     borderWidth: 1,
-    margin: 40,
+    margin: 8,
     padding: 10,
   },
   container: {
@@ -49,6 +50,10 @@ const styles = StyleSheet.create({
     width: 150,
     padding: 20,
     color: 'white',
+  },
+  image: {
+    alignSelf: 'stretch',
+    height: 320,
   },
 });
 
