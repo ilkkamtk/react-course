@@ -7,16 +7,12 @@
  */
 
 import React, {Component} from 'react';
-import HomeScreen from './containers/HomeScreen';
-import ResultScreen from './containers/ResultScreen';
-import SingleScreen from './containers/SingleScreen';
+import RootNavigator from './navigators/RootNavigator';
 
 class App extends Component {
   render() {
     return (
-        <HomeScreen />
-        // <ResultScreen />
-        // <SingleScreen />
+        <RootNavigator/>
     );
   }
 }

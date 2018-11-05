@@ -1,34 +1,44 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 
 import ArticleListItem from './ArticleListItem';
 
-const ArticleList = (props) => {
-  const articles = [
-    {
-      show: {
-        id: 1,
-        name: 'Naturistit rannalla',
-        image: 'http://placekitten.com/600/300'
-      },
+const articles = [
+  {
+    show: {
+      id: 1,
+      name: 'Naturistit rannalla',
+      image: 'http://placekitten.com/600/300',
     },
-    {
-      show: {
-        id: 2,
-        name: 'Kävelelevä Elämä',
-        image: 'http://placekitten.com/600/301'
-      },
+  },
+  {
+    show: {
+      id: 2,
+      name: 'Kävelelevä Elämä',
+      image: 'http://placekitten.com/600/301',
     },
-  ];
+  },
+];
+
+class ArticleList extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   // console.log(articles);
-  return (
-      <FlatList
-          style={styles.container}
-          data={articles}
-          renderItem={({item}) => <ArticleListItem name={item.show.name} image={item.show.image}/>}
-          keyExtractor={article => `${article.show.id}`}
-      />
-  );
+  render() {
+    return (
+        <FlatList
+            style={styles.container}
+            data={articles}
+            renderItem={({item}) => <ArticleListItem
+                showSingle={this.props.showSingle}
+                name={item.show.name}
+                image={item.show.image}/>}
+            keyExtractor={article => `${article.show.id}`}
+        />
+    );
+  }
 };
 
 const styles = StyleSheet.create({
