@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 
 import ArticleListItem from './ArticleListItem';
@@ -20,25 +20,19 @@ const articles = [
   },
 ];
 
-class ArticleList extends Component {
-  constructor(props) {
-    super(props);
-  }
+const ArticleList = (props) => {
 
-  // console.log(articles);
-  render() {
-    return (
-        <FlatList
-            style={styles.container}
-            data={articles}
-            renderItem={({item}) => <ArticleListItem
-                showSingle={this.props.showSingle}
-                name={item.show.name}
-                image={item.show.image}/>}
-            keyExtractor={article => `${article.show.id}`}
-        />
-    );
-  }
+  return (
+      <FlatList
+          style={styles.container}
+          data={articles}
+          renderItem={({item}) => <ArticleListItem
+              showSingle={props.showSingle}
+              name={item.show.name}
+              image={item.show.image}/>}
+          keyExtractor={article => `${article.show.id}`}
+      />
+  );
 };
 
 const styles = StyleSheet.create({

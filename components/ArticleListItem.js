@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -7,30 +7,25 @@ import {
   Image,
 } from 'react-native';
 
-class ArticleListItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+const ArticleListItem = (props) => {
 
-  render() {
-    return (
-        <View style={styles.item}>
-          <Text style={styles.title}>{this.props.name}</Text>
-          <View style={styles.imageBox}>
-            <Image
-                style={styles.image}
-                source={{uri: this.props.image}}
-            />
-            <View style={styles.buttons}>
-              <TouchableOpacity style={styles.button}
-                                onPress={this.props.showSingle}>
-                <Text style={styles.buttonText}>Visit site</Text>
-              </TouchableOpacity>
-            </View>
+  return (
+      <View style={styles.item}>
+        <Text style={styles.title}>{props.name}</Text>
+        <View style={styles.imageBox}>
+          <Image
+              style={styles.image}
+              source={{uri: props.image}}
+          />
+          <View style={styles.buttons}>
+            <TouchableOpacity style={styles.button}
+                              onPress={props.showSingle}>
+              <Text style={styles.buttonText}>Visit site</Text>
+            </TouchableOpacity>
           </View>
         </View>
-    );
-  }
+      </View>
+  );
 };
 
 const styles = StyleSheet.create({

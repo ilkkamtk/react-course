@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ArticleList from '../components/ArticleList';
 import {StyleSheet} from 'react-native';
 
