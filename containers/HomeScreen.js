@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {getTVMazeShowsAction} from '../actions/tvmaze-actions';
+import {setQueryFormAction} from '../actions/form-actions';
 import {
   View,
   Text,
@@ -7,9 +10,15 @@ import {
   TouchableOpacity, Image,
 } from 'react-native';
 
-const HomeScreen = (props) => {
+const HomeScreen = ({navigation, query, store, shows, setQueryFormAction, getTVMazeShowsAction}) => {
+  const setQuery = (evt) => {
+    // console.log(evt.nativeEvent.text);
+    setQueryFormAction(evt.nativeEvent.text);
+  };
+
   const doSearch = () => {
-    props.navigation.navigate('Results');
+    getTVMazeShowsAction(query);
+    navigation.navigate('Results');
   };
 
   return (
@@ -21,7 +30,9 @@ const HomeScreen = (props) => {
         <TextInput
             style={styles.kentta}
             placeholder={'Search for TV show'}
-            value={props.text}
+            value={query}
+            onChange={setQuery}
+            clearButtonMode="always"
         />
         <TouchableOpacity style={styles.container} onPress={doSearch}>
           <Text style={styles.nappi}>Search</Text>
@@ -59,4 +70,14 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+const mapStateToProps = (store) => {
+  console.log(store);
+  return {
+    query: store.formState.query,
+  };
+};
+
+export default connect(mapStateToProps, {
+  getTVMazeShowsAction,
+  setQueryFormAction,
+})(HomeScreen);

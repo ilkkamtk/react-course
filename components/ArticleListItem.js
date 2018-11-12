@@ -7,20 +7,33 @@ import {
   Image,
 } from 'react-native';
 
-const ArticleListItem = (props) => {
+const ArticleListItem = ({name, image, url, officialSite, summary, handleNavigation}) => {
+  const showSingle = (url) => {
+    handleNavigation('Show', url);
+  };
 
   return (
       <View style={styles.item}>
-        <Text style={styles.title}>{props.name}</Text>
+        <Text style={styles.title}>{name}</Text>
         <View style={styles.imageBox}>
           <Image
               style={styles.image}
-              source={{uri: props.image}}
+              source={{uri: image.medium}}
           />
           <View style={styles.buttons}>
+            {officialSite && <TouchableOpacity style={styles.button}
+                                               onPress={() => {
+                                                 showSingle(
+                                                     officialSite);
+                                               }}>
+              <Text style={styles.buttonText}>Official site</Text>
+            </TouchableOpacity>
+            }
             <TouchableOpacity style={styles.button}
-                              onPress={props.showSingle}>
-              <Text style={styles.buttonText}>Visit site</Text>
+                              onPress={() => {
+                                showSingle(url);
+                              }}>
+              <Text style={styles.buttonText}>TVMaze site</Text>
             </TouchableOpacity>
           </View>
         </View>

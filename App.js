@@ -7,12 +7,18 @@
  */
 
 import React, {Component} from 'react';
+import {Provider} from 'react-redux';
+import configureStore from './configure-store';
 import RootNavigator from './navigators/RootNavigator';
+
+const store = configureStore();
 
 class App extends Component {
   render() {
     return (
-        <RootNavigator/>
+        <Provider store={store}>
+          <RootNavigator/>
+        </Provider>
     );
   }
 }

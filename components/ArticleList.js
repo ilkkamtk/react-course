@@ -3,33 +3,19 @@ import {FlatList, StyleSheet} from 'react-native';
 
 import ArticleListItem from './ArticleListItem';
 
-const articles = [
-  {
-    show: {
-      id: 1,
-      name: 'Naturistit rannalla',
-      image: 'http://placekitten.com/600/300',
-    },
-  },
-  {
-    show: {
-      id: 2,
-      name: 'Kävelelevä Elämä',
-      image: 'http://placekitten.com/600/301',
-    },
-  },
-];
-
-const ArticleList = (props) => {
+const ArticleList = ({shows, handleNavigation}) => {
 
   return (
       <FlatList
           style={styles.container}
-          data={articles}
+          data={shows}
           renderItem={({item}) => <ArticleListItem
-              showSingle={props.showSingle}
+              handleNavigation={handleNavigation}
               name={item.show.name}
-              image={item.show.image}/>}
+              image={item.show.image}
+              url={item.show.url}
+              officialSite={item.show.officialSite}
+              summary={item.show.summary}/>}
           keyExtractor={article => `${article.show.id}`}
       />
   );

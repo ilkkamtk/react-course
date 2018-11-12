@@ -1,14 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import ArticleList from '../components/ArticleList';
 import {StyleSheet} from 'react-native';
 
-const ResultScreen = (props) => {
-  const showSingle = () => {
-    props.navigation.navigate('Show');
+const ResultScreen = ({shows, navigation}) => {
+  const handleNavigation = (routeName, params) => {
+    navigation.navigate(routeName, params);
   };
 
+
   return (
-      <ArticleList style={styles.list} showSingle={showSingle}/>
+      <ArticleList style={styles.list} shows={shows} handleNavigation={handleNavigation}/>
   );
 
 };
@@ -19,4 +21,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ResultScreen;
+const mapStateToProps = (store) => {
+  console.log(store);
+  return {
+    shows: store.tvMazeApiState.shows,
+  };
+};
+
+export default connect(mapStateToProps)(ResultScreen);

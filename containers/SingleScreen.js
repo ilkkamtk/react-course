@@ -2,9 +2,10 @@ import React from 'react';
 import {StyleSheet, WebView} from 'react-native';
 
 const SingleScreen = (props) => {
+  const url = props.navigation.state.params;
   return <WebView
       style={styles.container}
-      source={{uri: 'https://www.amc.com/shows/the-walking-dead'}}
+      source={{uri: url}}
       startInLoadingState={true}
   />;
 };
