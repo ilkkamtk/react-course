@@ -8,7 +8,7 @@ const ResultScreen = (props) => {
   };
 
   return (
-      <ArticleList style={styles.list} showSingle={this.showSingle}/>
+      <ArticleList style={styles.list} showSingle={showSingle}/>
   );
 
 };
